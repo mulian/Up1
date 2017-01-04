@@ -9,7 +9,6 @@ var https = require('https');
 var request = require('request');
 var tmp = require('tmp');
 
-
 // Different headers can be pushed depending on data format
 // to allow for changes with backwards compatibility
 var UP1_HEADERS = {
@@ -17,6 +16,7 @@ var UP1_HEADERS = {
 }
 
 function handle_upload(req, res) {
+    res.setHeader('Access-Control-Allow-Origin', iframeControll);
     var config = req.app.locals.config
     var busboy = new Busboy({
         headers: req.headers,
@@ -162,6 +162,25 @@ function cf_invalidate(ident, config) {
 function create_app(config) {
   var app = express();
   app.locals.config = config
+  /*
+  app.use(function(req, res, next) {
+   res.setHeader("Access-Control-Allow-Origin", "*");
+   // Website you wish to allow to connect
+    // res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3031');
+
+    // Request methods you wish to allow
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+
+    // Request headers you wish to allow
+    res.setHeader('Access-Control-Allow-Headers', "Origin, X-Requested-With, Content-Type, Accept");
+
+    // res.header("Access-Control-Allow-Headers", "X-Requested-With");
+     res.setHeader('Access-Control-Allow-Credentials', true);
+
+   console.log("set Header!");
+   return next();
+ });
+ */
   app.use('', express.static(config.path.client));
   app.use('/i', express.static(config.path.i));
   app.post('/up', handle_upload);

@@ -202,7 +202,7 @@
   border: 2px solid #FFF;
   bottom: 0;
   color: #FFF;
-  height: 200px;
+
   left: 0;
   margin: auto;
   position: absolute;
@@ -210,7 +210,9 @@
   text-align: center;
   top: 0;
   vertical-align: middle;
-  width: 200px;
+  /*height: 200px;
+  width: 200px;*/
+  
 }
 
 .contentarea .boxarea {
@@ -248,7 +250,7 @@
   text-decoration: none;
 }
 
-.hidden {
+.hidden,.newHidden {
   display: none!important;
 }
 

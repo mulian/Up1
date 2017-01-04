@@ -3,7 +3,6 @@
   window.upload = {}
 }(window));
 
-
 (function(upload) {
   upload.config = {}
 
@@ -125,7 +124,7 @@
 
 
 (function () {
-upload.load.needsome().need('config.js').need('js/shims.js').need('deps/zepto.min.js').done(function() {
+upload.load.needsome().need('js/iframe-msg.js').need('config.js').need('js/shims.js').need('deps/zepto.min.js').done(function() {
     upload.load.needsome().need('js/home.js', function() {return upload.home}).done(function() {
       if (typeof upload.config != 'undefined') {
           upload.modules.init()

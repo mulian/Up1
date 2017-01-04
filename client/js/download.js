@@ -72,6 +72,7 @@ upload.modules.addmodule({
           }
         }
         console.log(contentroot)
+        parentSend("newFile",contentroot);
         delete this._['text']
         this._.filename.hide()
         this._.title.text("Up1")
@@ -151,6 +152,7 @@ upload.modules.addmodule({
     downloaded: function (data) {
         this._.filename.text(data.header.name)
         this._.title.text(data.header.name + ' - Up1')
+        // console.log(data);
 
         var stored = this.delkeys[data.ident]
 
@@ -186,6 +188,16 @@ upload.modules.addmodule({
 
         delete this._['content']
         this._.detailsarea.empty()
+
+        parentSend("fileInfo",{
+            data: data,
+            association: association,
+            safemime: safemime,
+            decrypted: decrypted,
+            safedecrypted: safedecrypted,
+            url: url,
+            safeurl: safeurl,
+        });
 
         if (!!association) {
             this._.viewbtn.show()

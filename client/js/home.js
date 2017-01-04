@@ -9,7 +9,7 @@ upload.modules.addmodule({
     template: '\
         <div class="topbar">\
         <div class="viewswitcher">\
-            <a id="newpaste" class="btn">New Paste</a>\
+            <a id="newpaste" class="btn newHidden">New Paste</a>\
         </div>\
         </div>\
         <div class="contentarea" id="uploadview">\
